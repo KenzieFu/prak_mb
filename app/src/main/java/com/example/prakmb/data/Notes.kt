@@ -1,8 +1,12 @@
 package com.example.prakmb.data
 
+import java.text.SimpleDateFormat
+import java.util.Date
+
 data class Notes(
-    val id: Int,
-    val title:String,
-    val content:String,
-    val status :Boolean
+    var id: Int,
+    var title:String,
+    var content:String,
+    var date: String,
+    var status :Boolean
 )

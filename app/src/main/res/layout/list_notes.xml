@@ -7,7 +7,11 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        android:focusable="false"
+        android:clickable="false"
+
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,18 +32,21 @@
                 android:padding="5dp">
 
                 <TextView
+                    android:id="@+id/year"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="2023"
                     android:textSize="7sp" />
 
                 <TextView
+                    android:id="@+id/day"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="24"
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/month"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Feb"
@@ -53,6 +60,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Go shopping"
@@ -79,6 +87,7 @@
                     android:drawableLeft="@drawable/icons8_done_30"
                     android:gravity="center"
                     android:padding="4dp"
+                    android:focusable="false"
                     android:textSize="12sp" />
 
                 <Button
@@ -87,6 +96,8 @@
                     android:layout_height="40dp"
                     android:drawableLeft="@drawable/icons8_edit_30"
                     android:padding="4dp"
+                    android:focusable="false"
+
                     android:textSize="24sp" />
 
                 <Button
@@ -95,6 +106,7 @@
                     android:layout_height="40dp"
                     android:drawableLeft="@drawable/trash_icon"
                     android:padding="4dp"
+                    android:focusable="false"
                     android:textSize="24sp" />
             </LinearLayout>
 

@@ -3,6 +3,11 @@
     <item
         android:id="@+id/home"
         android:title="Home"
-        android:icon=""
+        android:icon="@drawable/icons8_home_50"
+        />
+    <item
+        android:id="@+id/finished"
+        android:title="Finished"
+        android:icon="@drawable/icons8_done_50"
         />
 </menu>
