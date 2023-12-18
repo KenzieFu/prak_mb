@@ -13,6 +13,11 @@
         android:theme="@style/Theme.PrakMb"
         tools:targetApi="31">
         <activity
+            android:name=".AddNotesActivity"
+            android:exported="false"
+            android:label="@string/title_activity_add_notes"
+            android:theme="@style/Theme.PrakMb" />
+        <activity
             android:name=".Detail"
             android:exported="false" />
         <activity

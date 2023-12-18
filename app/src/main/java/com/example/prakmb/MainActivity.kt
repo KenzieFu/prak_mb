@@ -23,7 +23,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        //Set Create Nav
+        binding.topAppBar.setOnMenuItemClickListener {
+            when(it.itemId){
+                R.id.add ->{
+                    val intent =Intent(this,AddNotesActivity::class.java)
+                    startActivity(intent)
+                }
+            }
+            true
+        }
         //Bot Navigation
         binding.botNav.setOnItemSelectedListener {
             when(it.itemId){
