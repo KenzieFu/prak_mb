@@ -91,16 +91,6 @@
                     android:textSize="12sp" />
 
                 <Button
-                    android:id="@+id/bEdit"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:drawableLeft="@drawable/icons8_edit_30"
-                    android:padding="4dp"
-                    android:focusable="false"
-
-                    android:textSize="24sp" />
-
-                <Button
                     android:id="@+id/bDel"
                     android:layout_width="40dp"
                     android:layout_height="40dp"

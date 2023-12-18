@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             title = "Movie",
             date = "2023-10-13",
             content = "Watch horror movie",
-            status = false
+            status = true
         )
         )
 
