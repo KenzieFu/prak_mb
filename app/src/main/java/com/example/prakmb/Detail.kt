@@ -22,7 +22,7 @@ class Detail : AppCompatActivity() {
             val status = intent.getStringExtra("status")
             binding.detailTitle.text = title
             binding.detailContent.text = content
-            binding.detailStatus.text = if (status.toBoolean()) "Finished" else "Ongoing"
+            binding.detailStatus.text = if (status.toString()== "1") "Finished" else "Ongoing"
         }
 
     }

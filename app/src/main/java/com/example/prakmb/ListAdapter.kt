@@ -43,7 +43,7 @@ class ListAdapter(context: Context, dataArrayList:List<Notes?>?)
 
         listday.text=date.dayOfMonth.toString()
         listMonth.text =date.month.toString().substring(0,3)
-        listYear.text=(date.year+1900).toString()
+        listYear.text=(date.year).toString()
         listTitle.text=listData!!.title
 
         return view

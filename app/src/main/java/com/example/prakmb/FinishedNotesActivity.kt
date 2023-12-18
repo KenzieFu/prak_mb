@@ -14,10 +14,31 @@ class FinishedNotesActivity : AppCompatActivity() {
     private lateinit var listAdapter: ListAdapter
 
     var dataArrayList : List<Notes?>? =null
+
+
+    //Bot Navigation
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFinishedNotesBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //Bot Navigation
+        binding.botNav.setOnItemSelectedListener {
+            when(it.itemId){
+                R.id.home->{
+                    val intent =Intent(this,MainActivity::class.java)
+                    intent.clearStack()
+                    startActivity(intent)
+                }
+                R.id.finished->{
+                    val intent =Intent(this,FinishedNotesActivity::class.java)
+                    intent.clearStack()
+                    startActivity(intent)
+                }
+            }
+            true
+        }
         val listNotes= listOf<Notes>(
             Notes(
                 id = 1,
@@ -59,5 +80,8 @@ class FinishedNotesActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+    fun Intent.clearStack() {
+        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
     }
 }
