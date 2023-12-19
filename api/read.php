@@ -3,7 +3,7 @@
   
   $result = [];
 
-  $query = "SELECT * FROM notes";
+  $query = "SELECT id, title, date, status FROM notes ORDER BY date ASC";
   $query_run = mysqli_query($CON, $query);
 
   while ($row = mysqli_fetch_assoc($query_run)) {
