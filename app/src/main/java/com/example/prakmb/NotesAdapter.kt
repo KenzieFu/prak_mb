@@ -10,6 +10,7 @@ import com.example.prakmb.data.Notes
 import com.example.prakmb.databinding.ListNotesBinding
 import java.text.SimpleDateFormat
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.Locale
 
 
@@ -27,15 +28,19 @@ class NotesListAdapter(
         // which than will be shown in recycler view
         @RequiresApi(Build.VERSION_CODES.O)
         fun bind(note: Notes) = with(binding) {
-            val dataformat = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
-            val date = LocalDate.parse(note!!.date)
+            // Create date object from date
+            val dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")
+            val date = LocalDate.parse(note!!.date, dateFormatter)
 
+            // Get Hour and Minute from date
+            val hourMinute = note.date?.substring(11,16)
 
-
-            day.text=date.dayOfMonth.toString()
-            month.text =date.month.toString().substring(0,3)
-            year.text=(date.year).toString()
-            title.text=note.title
+            // Apply to layout
+            day.text = date.dayOfMonth.toString()
+            month.text = date.month.toString().substring(0,3)
+            year.text = date.year.toString()
+            title.text = note.title
+            hour.text = hourMinute
             root.setOnClickListener { itemClickListener(note) }
         }
     }
