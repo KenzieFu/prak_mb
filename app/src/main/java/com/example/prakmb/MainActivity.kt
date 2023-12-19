@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.prakmb.data.Notes
 import com.example.prakmb.databinding.ActivityMainBinding
@@ -22,8 +23,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
     private lateinit var notesList: ArrayList<Notes>
 
-    var dataArrayList : List<Notes?>? =null
-    val listNotes= listOf<Notes>(
+
+    val listNotes= arrayListOf<Notes>(
         Notes(
             id = 1,
             title = "Go Shopping",
@@ -46,7 +47,7 @@ class MainActivity : AppCompatActivity() {
             status = true
         )
     )
-    private fun catItemClicked(note: Notes) {
+    private fun notesItemClicked(note: Notes) {
         startActivity(
             Intent(this@MainActivity, Detail::class.java)
                 .putExtra("notes", note)
@@ -58,15 +59,19 @@ class MainActivity : AppCompatActivity() {
         //initialize adapter
 
         val notesAdapter= NotesListAdapter(notes){
-            note->
+            note->notesItemClicked(note)
         }
+
+        binding.listview.adapter = notesAdapter
+        binding.listview.layoutManager= LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        //build recycle view
+        buildRecycleView()
         // Retrieve Notes From API
         retrieveNotes()
 
