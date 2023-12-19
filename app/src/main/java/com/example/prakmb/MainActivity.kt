@@ -22,21 +22,16 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityMainBinding
-    private lateinit var notesList: ArrayList<Notes>
-
-
-
     private fun notesItemClicked(note: Notes) {
+        // transfers note id to DetailActivity
+        val noteId = note.id.toString()
         startActivity(
             Intent(this@MainActivity, Detail::class.java)
-                .putExtra("notes", note)
+                .putExtra("note_id", noteId)
         )
     }
-    fun buildRecycleView(){
-        val notes = dummData()
-
+    fun buildRecycleView(notes: ArrayList<Notes>){
         //initialize adapter
-
         val notesAdapter= NotesListAdapter(notes){
             note->notesItemClicked(note)
         }
@@ -49,8 +44,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        //build recycle view
-        buildRecycleView()
+
         // Retrieve Notes From API
         retrieveNotes()
 
@@ -80,9 +74,6 @@ class MainActivity : AppCompatActivity() {
             }
             true
         }
-
-
-
     }
 
     private fun retrieveNotes() {
@@ -92,10 +83,18 @@ class MainActivity : AppCompatActivity() {
                     if (response.code() == 200) {
                         val list = response.body()
                         Log.d("GET NOTES ITEMS", list.toString())
+
+                        if (list!!.isEmpty()) {
+                            Toast.makeText(this@MainActivity, "There is no country data to display", Toast.LENGTH_LONG).show()
+                        } else {
+                            //build recycle view
+                            buildRecycleView(list)
+                        }
                     } else {
                         Toast.makeText(this@MainActivity, "Fail fetching from database response is not 200", Toast.LENGTH_LONG).show()
                         Log.d("GET NOTES ITEMS FAIL ${response.code()}", response.body().toString())
                     }
+
                 }
                 override fun onFailure(call: Call<ArrayList<Notes>>, t: Throwable) {
                     Toast.makeText(this@MainActivity, "Fail fetching from database onFailure", Toast.LENGTH_LONG).show()
@@ -103,8 +102,6 @@ class MainActivity : AppCompatActivity() {
                 }
             })
     }
-
-
 
     fun Intent.clearStack() {
         flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
