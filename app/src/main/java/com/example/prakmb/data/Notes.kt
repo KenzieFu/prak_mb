@@ -1,12 +1,16 @@
 package com.example.prakmb.data
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import java.text.SimpleDateFormat
 import java.util.Date
-@Parc
+
+
+@Parcelize
 data class Notes(
-    var id: Int,
-    var title:String,
-    var content:String,
-    var date: String,
-    var status :Boolean
-)
+    var id: Int?,
+    var title:String?,
+    var content:String?,
+    var date: String?,
+    var status :Boolean?
+) : Parcelable
