@@ -14,6 +14,9 @@ interface API {
     @GET("read.php")
     fun getNotes(): Call<ArrayList<Notes>>
 
+    @GET("read_finished.php")
+    fun getFinishedNotes(): Call<ArrayList<Notes>>
+
     // Add new note
     @FormUrlEncoded
     @POST("add.php")
