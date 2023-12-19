@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     private fun notesItemClicked(note: Notes) {
         // transfers note id to DetailActivity
         val noteId = note.id.toString()
+
         startActivity(
             Intent(this@MainActivity, Detail::class.java)
                 .putExtra("note_id", noteId)
