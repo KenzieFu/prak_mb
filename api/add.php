@@ -4,7 +4,7 @@
   $content =$_POST['content'];
   $date = $_POST['date'];
 
-  $query = "INSERT INTO notes (title,content,date)
+  $query = "INSERT INTO notes (title, content, date)
             VALUES('$title','$content','$date')";
   
   $query_run = mysqli_query($CON,$query);

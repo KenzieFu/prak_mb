@@ -29,7 +29,6 @@ class ListAdapter(context: Context, dataArrayList:List<Notes?>?)
             view = LayoutInflater
                 .from(context)
                 .inflate(R.layout.list_notes,parent,false)
-
         }
 
 
@@ -40,11 +39,13 @@ class ListAdapter(context: Context, dataArrayList:List<Notes?>?)
         val listMonth = view.findViewById<TextView>(R.id.month)
         val listYear = view.findViewById<TextView>(R.id.year)
         val listTitle =view.findViewById<TextView>(R.id.title)
+        val listTime = view.findViewById<TextView>(R.id.hour)
 
         listday.text=date.dayOfMonth.toString()
         listMonth.text =date.month.toString().substring(0,3)
-        listYear.text=(date.year).toString()
-        listTitle.text=listData!!.title
+        listYear.text = date.year.toString()
+        listTitle.text = listData!!.title
+//        listTime.text = date.atTime().toString()
 
         return view
 
