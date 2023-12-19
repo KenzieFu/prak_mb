@@ -3,7 +3,7 @@
   
   $result = [];
 
-  $query = "SELECT * FROM country";
+  $query = "SELECT * FROM notes";
   $query_run = mysqli_query($CON, $query);
 
   while ($row = mysqli_fetch_assoc($query_run)) {
