@@ -31,7 +31,7 @@ class ListAdapter(context: Context, dataArrayList:List<Notes?>?)
                 .inflate(R.layout.list_notes,parent,false)
 
         }
-        Log.d("sasd","kl")
+
 
         val dataformat = SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH)
         val date = LocalDate.parse(listData!!.date)
