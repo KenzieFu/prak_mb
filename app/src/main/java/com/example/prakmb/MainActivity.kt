@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.prakmb.data.Notes
+import com.example.prakmb.data.dummData
 import com.example.prakmb.databinding.ActivityMainBinding
 import com.example.prakmb.rest.RetrofitClient
 import retrofit2.Call
@@ -24,29 +25,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var notesList: ArrayList<Notes>
 
 
-    val listNotes= arrayListOf<Notes>(
-        Notes(
-            id = 1,
-            title = "Go Shopping",
-            date = "2023-12-01",
-            content = "Go buy some milk and beef for dinner",
-            status = false
-        ),
-        Notes(
-            id = 2,
-            title = "Study",
-            date = "2023-10-01",
-            content = "Go learn maths, and physics",
-            status = false
-        ),
-        Notes(
-            id = 3,
-            title = "Movie",
-            date = "2023-10-13",
-            content = "Watch horror movie",
-            status = true
-        )
-    )
+
     private fun notesItemClicked(note: Notes) {
         startActivity(
             Intent(this@MainActivity, Detail::class.java)
@@ -54,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         )
     }
     fun buildRecycleView(){
-        val notes = listNotes
+        val notes = dummData()
 
         //initialize adapter
 
@@ -103,28 +82,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        // List View Adapter and add onclick listener for each item of the list
 
-
-
-//        dataArrayList=listNotes
-//        val recycleAdapter = RecyclerView.Adapter(this,dataArrayList)
-//        listAdapter = ListAdapter(this@MainActivity,dataArrayList)
-//        binding.listview.adapter = listAdapter
-//
-//        binding.listview.isClickable = true
-//
-//        binding.listview.onItemClickListener= AdapterView.OnItemClickListener{
-//            adapterView,view,i,l ->
-//
-//            val intent = Intent(this@MainActivity,Detail::class.java)
-//            intent.putExtra("title", (dataArrayList as List<Notes>)[i].title)
-//            intent.putExtra("status", (dataArrayList as List<Notes>)[i].status)
-//            intent.putExtra("date", (dataArrayList as List<Notes>)[i].date)
-//            intent.putExtra("content", (dataArrayList as List<Notes>)[i].content)
-//            intent.putExtra("id", (dataArrayList as List<Notes>)[i].id)
-//            startActivity(intent)
-//        }
     }
 
     private fun retrieveNotes() {

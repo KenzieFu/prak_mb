@@ -1,5 +1,6 @@
 package com.example.prakmb.data
 
+import android.os.Parcel
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import java.text.SimpleDateFormat
@@ -14,3 +15,4 @@ data class Notes(
     var date: String?,
     var status :Boolean?
 ) : Parcelable
+

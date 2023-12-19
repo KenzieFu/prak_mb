@@ -21,12 +21,17 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listview"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
+        android:orientation="vertical"
+        android:scrollbars="vertical"
+        android:scrollbarStyle="outsideInset"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:paddingBottom="?attr/actionBarSize"
         tools:listitem="@layout/list_notes" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
