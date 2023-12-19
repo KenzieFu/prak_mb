@@ -1,9 +1,13 @@
 package com.example.prakmb.data
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class NoteDetail(
-    var countryId : Int?,
-    var countryName : String?,
-    var countryArea : String?,
-    var countryPopulation : Int?,
-    var countryDescription : String
-)
+    var id : Int? ,
+    var title : String?,
+    var content : String?,
+    var date : String?,
+    var status : Boolean?
+) : Parcelable
