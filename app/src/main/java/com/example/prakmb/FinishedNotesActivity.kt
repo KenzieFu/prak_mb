@@ -20,7 +20,7 @@ import java.util.Arrays
 class FinishedNotesActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityFinishedNotesBinding
-    private lateinit var listAdapter: ListAdapter
+
 
 
     fun buildRecycleView(notes: ArrayList<Notes>){
@@ -45,7 +45,7 @@ class FinishedNotesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityFinishedNotesBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        binding.botNav.isItemActiveIndicatorEnabled = true
         // Retrieve Finished Notes
         retrieveFinishedNotes()
 
