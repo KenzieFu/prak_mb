@@ -19,12 +19,12 @@ class NotesListAdapter(
     val itemClickListener: (Notes) -> Unit,
 ): RecyclerView.Adapter<NotesListAdapter.NotesViewHolder>() {
 
-    // create an inner class with name NotesViewHolder
+    // create an inner class with name CatViewHolder
     // It takes a view argument, in which pass the generated class of cat_item.xml
-    // ie ListNotesBinding and in the RecyclerView.ViewHolder(binding.root) pass it like this
+    // ie CatItemBinding and in the RecyclerView.ViewHolder(binding.root) pass it like this
     inner class NotesViewHolder(val binding: ListNotesBinding):
         RecyclerView.ViewHolder(binding.root) {
-        // bind the items with each item of the list notes ArrayList<Notes>
+        // bind the items with each item of the list cats ArrayList<CatItem>
         // which than will be shown in recycler view
         @RequiresApi(Build.VERSION_CODES.O)
         fun bind(note: Notes) = with(binding) {
@@ -45,7 +45,7 @@ class NotesListAdapter(
         }
     }
 
-    // inside the onCreateViewHolder inflate the view of NotesItemBinding
+    // inside the onCreateViewHolder inflate the view of CatItemBinding
     // and return new ViewHolder object containing this layout
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NotesViewHolder {
         val binding = ListNotesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -63,6 +63,6 @@ class NotesListAdapter(
         holder.bind(cat)
     }
 
-    // return the size of notes ArrayList<Notes>
+    // return the size of cats ArrayList<CatItem>
     override fun getItemCount() = notes.size
 }

@@ -22,32 +22,32 @@ import retrofit2.Response
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityMainBinding
-//    private fun notesItemClicked(note: Notes) {
-//        // transfers note id to DetailActivity
-//        val noteId = note.id.toString()
-//
-//        startActivity(
-//            Intent(this@MainActivity, Detail::class.java)
-//                .putExtra("note_id", noteId)
-//        )
-//    }
-//    fun buildRecycleView(notes: ArrayList<Notes>){
-//        //initialize adapter
-//        val notesAdapter= NotesListAdapter(notes){
-//            note->notesItemClicked(note)
-//        }
-//
-//        binding.listview.adapter = notesAdapter
-//        binding.listview.layoutManager= LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
-//    }
+    private fun notesItemClicked(note: Notes) {
+        // transfers note id to DetailActivity
+        val noteId = note.id.toString()
+
+        startActivity(
+            Intent(this@MainActivity, Detail::class.java)
+                .putExtra("note_id", noteId)
+        )
+    }
+    fun buildRecycleView(notes: ArrayList<Notes>){
+        //initialize adapter
+        val notesAdapter= NotesListAdapter(notes){
+            note->notesItemClicked(note)
+        }
+
+        binding.listview.adapter = notesAdapter
+        binding.listview.layoutManager= LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(HomeFragment())
 
-
+        // Retrieve Notes From API
+        retrieveNotes()
 
         //Set Create Nav
         binding.topAppBar.setOnMenuItemClickListener {
@@ -63,52 +63,50 @@ class MainActivity : AppCompatActivity() {
         binding.botNav.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.home->{
-                 replaceFragment(HomeFragment())
+                    val intent =Intent(this,MainActivity::class.java)
+                    intent.clearStack()
+                    startActivity(intent)
                 }
                 R.id.finished->{
-
+                    val intent =Intent(this,FinishedNotesActivity::class.java)
+                    intent.clearStack()
+                    startActivity(intent)
                 }
             }
             true
         }
     }
-    private fun replaceFragment(fragment: Fragment){
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frame_layout,fragment)
-        fragmentTransaction.commit()
+
+    private fun retrieveNotes() {
+        RetrofitClient.instance.getNotes()
+            .enqueue(object: Callback<ArrayList<Notes>> {
+                override fun onResponse(call: Call<ArrayList<Notes>>, response: Response<ArrayList<Notes>>) {
+                    if (response.code() == 200) {
+                        val list = response.body()
+                        Log.d("GET NOTES ITEMS", list.toString())
+
+                        if (list!!.isEmpty()) {
+                            Toast.makeText(this@MainActivity, "There is no country data to display", Toast.LENGTH_LONG).show()
+                        } else {
+                            //build recycle view
+                            buildRecycleView(list)
+                        }
+                    } else {
+                        Toast.makeText(this@MainActivity, "Fail fetching from database response is not 200", Toast.LENGTH_LONG).show()
+                        Log.d("GET NOTES ITEMS FAIL ${response.code()}", response.body().toString())
+                    }
+
+                }
+                override fun onFailure(call: Call<ArrayList<Notes>>, t: Throwable) {
+                    Toast.makeText(this@MainActivity, "Fail fetching from database onFailure", Toast.LENGTH_LONG).show()
+                    Log.d("GET NOTES ITEMS FAIL", t.toString())
+                }
+            })
     }
 
-//    private fun retrieveNotes() {
-//        RetrofitClient.instance.getNotes()
-//            .enqueue(object: Callback<ArrayList<Notes>> {
-//                override fun onResponse(call: Call<ArrayList<Notes>>, response: Response<ArrayList<Notes>>) {
-//                    if (response.code() == 200) {
-//                        val list = response.body()
-//                        Log.d("GET NOTES ITEMS", list.toString())
-//
-//                        if (list!!.isEmpty()) {
-//                            Toast.makeText(this@MainActivity, "There is no country data to display", Toast.LENGTH_LONG).show()
-//                        } else {
-//                            //build recycle view
-//                            buildRecycleView(list)
-//                        }
-//                    } else {
-//                        Toast.makeText(this@MainActivity, "Fail fetching from database response is not 200", Toast.LENGTH_LONG).show()
-//                        Log.d("GET NOTES ITEMS FAIL ${response.code()}", response.body().toString())
-//                    }
-//
-//                }
-//                override fun onFailure(call: Call<ArrayList<Notes>>, t: Throwable) {
-//                    Toast.makeText(this@MainActivity, "Fail fetching from database onFailure", Toast.LENGTH_LONG).show()
-//                    Log.d("GET NOTES ITEMS FAIL", t.toString())
-//                }
-//            })
-//    }
-//
-//    fun Intent.clearStack() {
-//        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-//    }
+    fun Intent.clearStack() {
+        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+    }
 
 
 }
