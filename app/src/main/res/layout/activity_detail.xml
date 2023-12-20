@@ -11,15 +11,29 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="10dp"
         android:orientation="vertical">
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="10dp"
+            android:orientation="horizontal">
         <TextView
             android:id="@+id/detailTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Go Shopping"
-        android:textSize="30sp"
-        android:layout_marginBottom="20dp"
-        android:textStyle="bold"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Go Shopping"
+            android:textSize="30sp"
+            android:layout_marginHorizontal="15dp"
+            android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/detailDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:text="19 December 2023 20:00"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
         <TextView
             android:id="@+id/detailStatus"
             android:layout_width="wrap_content"
@@ -41,12 +55,7 @@
             kasjdklasdladklsadja
             alksdjklasdklasdjdasl
             kasdjklasdklasdjklasd
-            \nsdasaslsadsad
-
-
-"
-
-            />
+            \nsdasaslsadsad"/>
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"

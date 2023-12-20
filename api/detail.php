@@ -1,7 +1,7 @@
 <?php
   require_once('inc/open_connection.php');
   
-  $id = $_GET['notesId'];
+  $id = $_GET['noteId'];
 
   $query = "SELECT *
                    FROM notes

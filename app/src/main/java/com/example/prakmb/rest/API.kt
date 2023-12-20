@@ -1,5 +1,6 @@
 package com.example.prakmb.rest
 
+import com.example.prakmb.data.NoteDetail
 import com.example.prakmb.data.Notes
 import com.example.prakmb.data.Response
 import retrofit2.Call
@@ -25,4 +26,11 @@ interface API {
         @Field("content") content: String?,
         @Field("date") date: String?,
     ): Call<Response>
+
+
+    // Get detail note
+    @GET("detail.php")
+    fun getNoteDetail(
+        @Query("noteId") noteId: String?
+    ):Call<NoteDetail>
 }
