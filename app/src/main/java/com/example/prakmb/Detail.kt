@@ -127,9 +127,16 @@ class Detail : AppCompatActivity() {
                         binding.bdel.setOnClickListener{
                             deleteNotes(notesId.toString())
                         }
+                        binding.bEdit.setOnClickListener{
+
+                            startActivity(Intent(this@Detail, EditNotesActivity::class.java)
+                                .putExtra("currentNotes",list)
+                            )
+                        }
 
                         if(list.status.toString()== "1"){
                             binding.bfinish.visibility=View.GONE
+                            binding.bEdit.visibility=View.GONE
 
                         }
 

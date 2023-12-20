@@ -34,6 +34,15 @@ interface API {
     @GET("read_finished.php")
     fun getFinishedNotes(): Call<ArrayList<Notes>>
 
+    // Edit Notes
+    @FormUrlEncoded
+    @POST("edit.php")
+    fun editNoteDetail(
+        @Field("title") title: String?,
+        @Field("content") content: String?,
+        @Field("date") date: String?,
+    ): Call<Response>
+
     // Add new note
     @FormUrlEncoded
     @POST("add.php")
@@ -42,4 +51,6 @@ interface API {
         @Field("content") content: String?,
         @Field("date") date: String?,
     ): Call<Response>
+
+
 }
