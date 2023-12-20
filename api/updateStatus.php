@@ -3,7 +3,7 @@
   
   $id = $_POST['notesId'];
 
- echo id;
+ 
   $query = "UPDATE notes SET 
   status = 1
   WHERE id = '$id';";

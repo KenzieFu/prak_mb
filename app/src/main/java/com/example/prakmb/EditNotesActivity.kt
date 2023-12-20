@@ -44,11 +44,11 @@ class EditNotesActivity : AppCompatActivity() {
             this@EditNotesActivity.finish()
         }
         binding.submitButton.setOnClickListener{
-
+            updateCountryDetail(currentData.id!!.toInt())
         }
     }
 
-    private fun updateCountryDetail(countryId: Int) {
+    private fun updateCountryDetail(notesId: Int) {
 
 
         val inputTitle = binding.edtTitle.text.toString().trim()
@@ -74,8 +74,8 @@ class EditNotesActivity : AppCompatActivity() {
         val inputDate = dateBuilder.toString()
 
         if (inputTitle.isNotEmpty() && inputContent.isNotEmpty() && inputDate.isNotEmpty()) {
-            val updatedId = countryId.toString()
-            RetrofitClient.instance.updateCountryDetail(updatedId, inputName, inputContinent, inputPopulation, inputDescription)
+            val updatedId = notesId
+            RetrofitClient.instance.editNoteDetail(updatedId, inputTitle,inputContent,inputDate)
                 .enqueue(object: Callback<Response> {
                     override fun onResponse(
                         call: Call<Response>,

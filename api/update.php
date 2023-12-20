@@ -4,16 +4,16 @@
   $id = $_POST['notes_id'];
   $title = $_POST['title'];
   $content = $_POST['content'];
- 
+  $date = $_POST['date'];
 
   $query = "UPDATE notes SET 
   title = '$title',
-  content = '$content'
-  
+  content = '$content',
+  date = '$date',
   WHERE id = '$id';";
 
   $query_run = mysqli_query($CON, $query);
-  
+
   if ($query_run) {
         echo json_encode([
         "error" => false,

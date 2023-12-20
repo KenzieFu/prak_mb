@@ -36,8 +36,9 @@ interface API {
 
     // Edit Notes
     @FormUrlEncoded
-    @POST("edit.php")
+    @POST("update.php")
     fun editNoteDetail(
+        @Field("notesId") notesId: Int?,
         @Field("title") title: String?,
         @Field("content") content: String?,
         @Field("date") date: String?,
