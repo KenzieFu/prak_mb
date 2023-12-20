@@ -1,7 +1,7 @@
 <?php
   require_once('inc/open_connection.php');
   
-  $id = $_POST['notes_id'];
+  $id = $_POST['notesId'];
   $title = $_POST['title'];
   $content = $_POST['content'];
   $date = $_POST['date'];
@@ -9,7 +9,7 @@
   $query = "UPDATE notes SET 
   title = '$title',
   content = '$content',
-  date = '$date',
+  date = '$date'
   WHERE id = '$id';";
 
   $query_run = mysqli_query($CON, $query);

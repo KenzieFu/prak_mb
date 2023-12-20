@@ -2,11 +2,11 @@
   require_once('inc/open_connection.php');
   
   $id = $_POST['notesId'];
-
+$id=(int)$id;
  
   $query = "UPDATE notes SET 
   status = 1
-  WHERE id = '$id';";
+  WHERE id = $id;";
 
   $query_run = mysqli_query($CON, $query);
 
@@ -18,7 +18,7 @@
     } else {
         echo json_encode([
         "error" => true,
-        "message" => 'Notes failed to be updated!'
+        "message" => 'Notes failed to be updated! '
         ]);
     }
 

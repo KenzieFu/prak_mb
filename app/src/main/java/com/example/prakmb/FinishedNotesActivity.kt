@@ -20,7 +20,7 @@ import java.util.Arrays
 class FinishedNotesActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityFinishedNotesBinding
-    private lateinit var listAdapter: ListAdapter
+
 
 
     fun buildRecycleView(notes: ArrayList<Notes>){
