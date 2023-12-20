@@ -93,6 +93,8 @@ class AddNotesActivity : AppCompatActivity() {
             Toast.makeText(this@AddNotesActivity, "Fail adding new Note, field(s) is empty!", Toast.LENGTH_LONG).show()
         }
 
+
+
         // Debugging
 //        Log.d("Title", inputTitle)
 //        Log.d("Content", inputContent)

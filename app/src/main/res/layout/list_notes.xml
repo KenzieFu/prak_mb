@@ -87,24 +87,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1" />
 
-                <Button
-                    android:id="@+id/bfinish"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:drawableLeft="@drawable/icons8_done_30"
-                    android:gravity="center"
-                    android:padding="4dp"
-                    android:focusable="false"
-                    android:textSize="12sp" />
 
-                <Button
-                    android:id="@+id/bDel"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:drawableLeft="@drawable/trash_icon"
-                    android:padding="4dp"
-                    android:focusable="false"
-                    android:textSize="24sp" />
             </LinearLayout>
 
         </LinearLayout>

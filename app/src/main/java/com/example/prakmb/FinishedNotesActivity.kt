@@ -35,7 +35,7 @@ class FinishedNotesActivity : AppCompatActivity() {
     private fun notesItemClicked(note: Notes) {
         startActivity(
             Intent(this@FinishedNotesActivity, Detail::class.java)
-                .putExtra("notes", note)
+                .putExtra("note_id", note.id.toString())
         )
     }
 

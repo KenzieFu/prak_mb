@@ -31,15 +31,23 @@ class MainActivity : AppCompatActivity() {
                 .putExtra("note_id", noteId)
         )
     }
-    fun buildRecycleView(notes: ArrayList<Notes>){
+    private fun updateStatusButton(note:Notes){
+
+    }
+    fun buildRecycleView(notes: ArrayList<Notes>) {
         //initialize adapter
-        val notesAdapter= NotesListAdapter(notes){
-            note->notesItemClicked(note)
+        val notesAdapter = NotesListAdapter(notes) {
+            note->
+            notesItemClicked(note)
+
         }
+
 
         binding.listview.adapter = notesAdapter
         binding.listview.layoutManager= LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
     }
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,6 +85,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    //Update Status
+    private fun updateStatus(note: Notes){
+
+    }
     private fun retrieveNotes() {
         RetrofitClient.instance.getNotes()
             .enqueue(object: Callback<ArrayList<Notes>> {

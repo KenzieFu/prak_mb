@@ -1,19 +1,15 @@
 <?php
   require_once('inc/open_connection.php');
   
-  $id = $_POST['notes_id'];
-  $title = $_POST['title'];
-  $content = $_POST['content'];
- 
+  $id = $_POST['notesId'];
 
+ echo id;
   $query = "UPDATE notes SET 
-  title = '$title',
-  content = '$content'
-  
+  status = 1
   WHERE id = '$id';";
 
   $query_run = mysqli_query($CON, $query);
-  
+
   if ($query_run) {
         echo json_encode([
         "error" => false,

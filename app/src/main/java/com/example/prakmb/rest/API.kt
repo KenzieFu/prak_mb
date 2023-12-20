@@ -1,5 +1,6 @@
 package com.example.prakmb.rest
 
+import com.example.prakmb.data.NoteDetail
 import com.example.prakmb.data.Notes
 import com.example.prakmb.data.Response
 import retrofit2.Call
@@ -13,6 +14,22 @@ interface API {
     // Get all notes
     @GET("read.php")
     fun getNotes(): Call<ArrayList<Notes>>
+
+    @FormUrlEncoded
+    @POST("delete.php")
+    fun deleteNotesDetail(
+        @Field("notesId") notesId: String?
+    ): Call<Response>
+    @GET("detail.php")
+    fun getDetails(
+        @Query("notesId") notesId: Int?
+    ):Call<NoteDetail>
+
+@FormUrlEncoded
+    @POST("updateStatus.php")
+    fun updateStatus(
+        @Field("notesId") notesId: Int?
+    ):Call<Response>
 
     @GET("read_finished.php")
     fun getFinishedNotes(): Call<ArrayList<Notes>>

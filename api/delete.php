@@ -1,7 +1,7 @@
 <?php
   require_once('inc/open_connection.php');
   
-  $id = $_POST['notes_id'];
+  $id = $_POST['notesId'];
 
   $query = "DELETE FROM notes WHERE id = '$id';";
 

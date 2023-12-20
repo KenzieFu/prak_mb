@@ -3,7 +3,7 @@
   
   $id = $_GET['notesId'];
 
-  $query = "SELECT *
+  $query = "SELECT id,title,content,date,status
                    FROM notes
                    WHERE id='$id'";
 

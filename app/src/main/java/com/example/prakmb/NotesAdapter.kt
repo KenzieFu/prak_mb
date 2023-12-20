@@ -3,6 +3,7 @@ package com.example.prakmb
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ExpandableListView.OnChildClickListener
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +18,8 @@ import java.util.Locale
 class NotesListAdapter(
     private val notes: ArrayList<Notes>,
     val itemClickListener: (Notes) -> Unit,
+
+
 ): RecyclerView.Adapter<NotesListAdapter.NotesViewHolder>() {
 
     // create an inner class with name CatViewHolder
@@ -41,6 +44,8 @@ class NotesListAdapter(
             year.text = date.year.toString()
             title.text = note.title
             hour.text = hourMinute
+//            binding.bfinish.setOnClickListener{finishedClick(note)}
+
             root.setOnClickListener { itemClickListener(note) }
         }
     }

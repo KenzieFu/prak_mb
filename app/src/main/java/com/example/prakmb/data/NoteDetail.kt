@@ -9,5 +9,5 @@ data class NoteDetail(
     var title : String?,
     var content : String?,
     var date : String?,
-    var status : Boolean?
+    var status : Int?
 ) : Parcelable
